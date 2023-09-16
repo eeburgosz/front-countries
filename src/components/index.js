@@ -1,4 +1,6 @@
-export { NavBar } from "./NavBar";
-export { CardsContainer } from './CardsContainer';
-export { Card } from "./Card";
+export { Filtros } from "./Filtros/Filtros";
+export { Cards } from "./Card/Card";
+export { CardsContainer } from "./CardsContainer/CardsContainer";
+export { NavBar } from "./NavBar/NavBar";
+
 

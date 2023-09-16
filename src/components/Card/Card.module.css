@@ -1,0 +1,47 @@
+.container{      
+   border-radius: 0.5rem;
+   color: #000000;
+   box-shadow: 7px 7px 7px ;
+   width: 15rem;
+   height: 15rem;
+   display: flex;
+   flex-direction: column;
+   cursor: pointer;
+   backdrop-filter: blur(6px) saturate(200%);
+   -webkit-backdrop-filter: blur(6px) saturate(200%);
+   background-color: rgba(17, 25, 40, 0.27);
+   border-radius: 12px;
+   border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.container p{   
+   color: #E5E5CB;
+   font-weight: 700;
+   margin: 0px;
+   margin-left: 0.5rem;
+   height: 2.5rem;
+   display: flex;
+   align-items: center;
+}
+
+.container span{
+   color: #E5E5CB;
+   font-size: medium;
+   margin: 0px;
+   height: 1.5rem;
+   text-align: right;
+   margin-right: 0.5rem;   
+}
+
+.container img{
+   border-radius: 0.5rem 0.5rem 0 0;
+   height: 11rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   object-fit: cover;
+}
+
+.link{
+   text-decoration: none;
+}

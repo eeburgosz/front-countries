@@ -1,0 +1,72 @@
+.container{   
+   width: 100%;
+   height: 4rem;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+   backdrop-filter: blur(60px) saturate(200%);
+   -webkit-backdrop-filter: blur(6px) saturate(200%);
+   background-color: rgba(17, 25, 40, 0.27);
+   position: fixed;
+   z-index: 10;
+}
+
+.container h1{
+   letter-spacing: 4px;
+}
+
+.image{
+   height: 100%;
+   width: 13rem;
+   object-fit: cover;
+}
+
+.iconContainer{
+   width: 16rem;
+   display: flex;
+   justify-content: space-evenly;
+   font-size: 1.5rem;   
+}
+
+.iconContainer div{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   cursor: pointer;
+}
+
+.iconContainer span{
+   font-size: small;
+}
+
+.link{
+   text-decoration: none;
+   color: inherit;
+}
+
+.toggleInput{
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+}
+
+.toggleInput i{
+   margin-right: 5px;
+}
+
+.input{
+   color: #E5E5CB;
+   display: flex;
+   position: absolute;
+   margin-right: 25rem;
+   align-self: center;
+   padding-top: 0.4rem;
+   padding-bottom: 0.4rem;
+   border-radius: 5px;
+   border: none;
+   outline: none;
+   backdrop-filter: blur(25px) saturate(200%);
+   -webkit-backdrop-filter: blur(25px) saturate(200%);
+   background-color: rgba(40, 17, 27, 0);
+}

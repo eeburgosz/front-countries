@@ -27,4 +27,4 @@ export const counterSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { startLoadingCountries, setCountries } = counterSlice.actions;
+export const { startLoadingCountries, setCountries, startLoadingCountryById, setCountryById } = counterSlice.actions;
