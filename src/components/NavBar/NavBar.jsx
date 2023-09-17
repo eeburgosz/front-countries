@@ -7,7 +7,7 @@ import countries from '../../assets/countries.png'
 import { useDispatch } from "react-redux";
 import { getCountriesByName } from "../../redux-toolkit/thunks";
 
-export const NavBar = () => {
+export const NavBar = ({setCurrentPage}) => {
 
   const location= useLocation()
   const navigate= useNavigate()
@@ -36,7 +36,7 @@ export const NavBar = () => {
     e.preventDefault();
     dispatch(getCountriesByName(value))
     setValue("")
-    // setCurrentPage(1)
+    setCurrentPage(1)
   }
 
   return (
@@ -64,7 +64,7 @@ export const NavBar = () => {
         <Link to="/countries" className={style.link}>
           <div onClick={handleRefresh}>
             <i className="pi pi-home"></i>
-            <span>Home</span>
+            <span>Home/Refresh</span>
           </div>
         </Link>
         <Link to="/create" className={style.link}>

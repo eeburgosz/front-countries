@@ -13,6 +13,7 @@ export const CardsContainer = () => {
    dispatch(getCountries())
   },[dispatch])
 
+
   const [currentPage, setCurrentPage] = useState(1)
   // eslint-disable-next-line
   const [countriesPerPage, setCountriesPerPage] = useState(9)
@@ -26,10 +27,10 @@ export const CardsContainer = () => {
 
   return (
     <>
-    {/* <NavBar setCurrentPage={setCurrentPage}/> */}
+    <NavBar setCurrentPage={setCurrentPage} />
       <div className={style.container}>
         {
-          /* !isLoading && */ currentCountry.length=== 0 ? (<h2>No countries found</h2>)
+          currentCountry.length=== 0 ? (<h2>No countries found</h2>)
           :
           !isLoading && currentCountry.map(country=>          
             <Cards 

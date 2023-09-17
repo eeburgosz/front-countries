@@ -1,7 +1,11 @@
 import React from 'react'
+import { NavBar } from "../../components";
 
 export const CreatePage = () => {
   return (
-    <div>CreatePage</div>
+    <>
+      <NavBar />
+      <div>CreatePage</div>
+    </>
   )
 }

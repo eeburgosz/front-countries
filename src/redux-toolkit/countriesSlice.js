@@ -5,7 +5,8 @@ export const countriesSlice = createSlice({
    initialState: {
       isLoading: false,
       countries: [],
-      countryById: {}
+      countryById: {},
+      currentPage: 1
    },
    reducers: {
       startLoadingCountries: (state) => {
@@ -28,6 +29,9 @@ export const countriesSlice = createSlice({
       setCountryByName: (state, action) => {
          state.isLoading = false;
          state.countries = action.payload;
+      },
+      setCurrentPage: (state, action) => {
+         state.currentPage = action.payload;
       }
    },
 });
@@ -38,5 +42,6 @@ export const {
    startLoadingCountryById,
    setCountryById,
    startLoadingCountryByName,
-   setCountryByName
+   setCountryByName,
+   setCurrentPage
 } = countriesSlice.actions;

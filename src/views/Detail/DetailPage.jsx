@@ -3,6 +3,7 @@ import style from './DetailPage.module.css'
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCountryById } from "../../redux-toolkit/thunks";
+import { NavBar } from "../../components";
 
 export const DetailPage = () => {
 
@@ -15,7 +16,9 @@ export const DetailPage = () => {
   
   const {countryById, isLoading}= useSelector(state=>state.countries)
 
-  return (    
+  return (
+    <>
+    <NavBar />
     <div className={style.container}>
       {isLoading ? (<h1>Cargando</h1>)
     :
@@ -73,5 +76,6 @@ export const DetailPage = () => {
       )  
     }
     </div>
+    </>    
   )
 }
