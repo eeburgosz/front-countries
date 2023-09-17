@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import {useDispatch} from 'react-redux'
 import { getCountries } from "../../redux-toolkit/thunks";
 import style from "./Home.module.css"
-import { CardsContainer, Filtros } from "../../components";
+import { CardsContainer, Filtros, Paginado } from "../../components";
 
 export const HomePage = () => {
 
@@ -17,7 +17,7 @@ export const HomePage = () => {
       <Filtros />
       <div className={style.subcontainer}>
         <CardsContainer />
-        <div>Paginado</div>
+        {/* <Paginado /> */}
       </div>
       <div>Footer</div>
     </div>

@@ -30,7 +30,7 @@ export const DetailPage = () => {
                 <span>{countryById.id}</span>
               </div>
             </div>
-            <h3>{(countryById.capital)?.replace(/[^a-zA-Z]/g, '')}</h3>
+            <h3>{(countryById.capital)?.replace(/[^a-zA-Z]/g, '').replace(/([A-Z])/g, ' $1').trim()}</h3>
           </div>
 
           <div className={style.infoSubcontainer}>

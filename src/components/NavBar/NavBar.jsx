@@ -1,13 +1,22 @@
 import React, { useState } from 'react'
 import style from './Navbar.module.css'
 import 'primeicons/primeicons.css';
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import 'animate.css'
 import countries from '../../assets/countries.png'
 import { useDispatch } from "react-redux";
 import { getCountriesByName } from "../../redux-toolkit/thunks";
 
 export const NavBar = () => {
+
+  const location= useLocation()
+  const navigate= useNavigate()
+  const handleRefresh=()=>{
+    location.pathname === '/countries' ?
+      window.location.reload()
+      :
+      navigate('/countries')
+  }
 
   const dispatch= useDispatch()
 
@@ -27,6 +36,7 @@ export const NavBar = () => {
     e.preventDefault();
     dispatch(getCountriesByName(value))
     setValue("")
+    // setCurrentPage(1)
   }
 
   return (
@@ -52,7 +62,7 @@ export const NavBar = () => {
           </form>          
         )}        
         <Link to="/countries" className={style.link}>
-          <div>
+          <div onClick={handleRefresh}>
             <i className="pi pi-home"></i>
             <span>Home</span>
           </div>
