@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const counterSlice = createSlice({
-   name: 'counter',
+export const countriesSlice = createSlice({
+   name: 'countries',
    initialState: {
       isLoading: false,
       countries: [],
@@ -12,7 +12,6 @@ export const counterSlice = createSlice({
          state.isLoading = true;
       },
       setCountries: (state, action) => {
-         // console.log(action);
          state.isLoading = false;
          state.countries = action.payload;
       },
@@ -22,9 +21,22 @@ export const counterSlice = createSlice({
       setCountryById: (state, action) => {
          state.isLoading = false;
          state.countryById = action.payload;
+      },
+      startLoadingCountryByName: (state) => {
+         state.isLoading = true;
+      },
+      setCountryByName: (state, action) => {
+         state.isLoading = false;
+         state.countries = action.payload;
       }
    },
 });
-
 // Action creators are generated for each case reducer function
-export const { startLoadingCountries, setCountries, startLoadingCountryById, setCountryById } = counterSlice.actions;
+export const {
+   startLoadingCountries,
+   setCountries,
+   startLoadingCountryById,
+   setCountryById,
+   startLoadingCountryByName,
+   setCountryByName
+} = countriesSlice.actions;

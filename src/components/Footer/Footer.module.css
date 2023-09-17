@@ -1,0 +1,8 @@
+.container{
+   background-color: #000000;
+   color: #E5E5CB;
+   display: flex;
+   position: fixed;
+   padding-top: 6rem;
+   z-index: 100;
+}

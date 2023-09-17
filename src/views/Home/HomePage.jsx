@@ -19,6 +19,7 @@ export const HomePage = () => {
         <CardsContainer />
         <div>Paginado</div>
       </div>
+      <div>Footer</div>
     </div>
   )
 }

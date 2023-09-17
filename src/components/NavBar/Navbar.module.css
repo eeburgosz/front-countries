@@ -7,7 +7,8 @@
    justify-content: space-between;
    backdrop-filter: blur(60px) saturate(200%);
    -webkit-backdrop-filter: blur(6px) saturate(200%);
-   background-color: rgba(17, 25, 40, 0.27);
+   background-color: rgba(17, 25, 40, 0.27);   
+   border-bottom: 1px solid rgba(255, 255, 255, 0.125);
    position: fixed;
    z-index: 10;
 }
@@ -16,9 +17,13 @@
    letter-spacing: 4px;
 }
 
+.logo{
+   display: flex;
+   align-items: center;
+}
+
 .image{
-   height: 100%;
-   width: 13rem;
+   height: 4rem;
    object-fit: cover;
 }
 
@@ -69,4 +74,11 @@
    backdrop-filter: blur(25px) saturate(200%);
    -webkit-backdrop-filter: blur(25px) saturate(200%);
    background-color: rgba(40, 17, 27, 0);
+}
+
+.form{   
+   display: flex;
+   position: absolute;
+   margin-right: 35rem;
+   padding-top: 1rem;
 }

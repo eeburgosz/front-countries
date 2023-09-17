@@ -12,19 +12,26 @@ const dispatch= useDispatch()
 useEffect(()=>{  
    dispatch(getCountries())
   },[dispatch])
+
+  if(countries.length === 0 ){
+    return <h2>No countries found</h2>
+  }
   
   return (
       <div className={style.container}>
-        { !isLoading &&
-          countries.map(country=>          
-            <Cards 
-              key={country.id}
-              id={country.id}
-              flag={country.flag}
-              name={country.name}
-              continent={country.continent} 
-            />
-          )
+        {!isLoading && countries.length=== 0 ? (<h2>No countries found</h2>):
+ !isLoading &&
+  countries.map(country=>          
+    <Cards 
+      key={country.id}
+      id={country.id}
+      flag={country.flag}
+      name={country.name}
+      continent={country.continent} 
+    />
+  )
+
+
         }
       </div>
   )
