@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import style from './CardsContainer.module.css'
-import { Cards, NavBar, Paginado } from '../';
+import { Cards, Paginado } from '../';
 import { useDispatch, useSelector } from "react-redux";
 import { getCountries } from "../../redux-toolkit/thunks";
+import { setCurrentPage } from "../../redux-toolkit/countriesSlice";
 
 
 export const CardsContainer = () => {
 
-  const {countries, isLoading}= useSelector(state=>state.countries)
+  const {countries, isLoading, currentPage}= useSelector(state=>state.countries)
   const dispatch= useDispatch()
   useEffect(()=>{  
    dispatch(getCountries())
   },[dispatch])
 
-
-  const [currentPage, setCurrentPage] = useState(1)
+  
   // eslint-disable-next-line
   const [countriesPerPage, setCountriesPerPage] = useState(9)
   const indexOfLastCountry= currentPage * countriesPerPage;
@@ -22,12 +22,10 @@ export const CardsContainer = () => {
   const currentCountry= countries.slice(indexOfFirstCountry, indexOfLastCountry)
   
   const paginator = (pageNumber) => {
-		setCurrentPage(pageNumber);
+		dispatch(setCurrentPage(pageNumber))
 	};
 
-  return (
-    <>
-    <NavBar setCurrentPage={setCurrentPage} />
+  return (    
       <div className={style.container}>
         {
           currentCountry.length=== 0 ? (<h2>No countries found</h2>)
@@ -48,6 +46,5 @@ export const CardsContainer = () => {
           paginator={paginator}
         />
       </div>
-    </>
   )
 }

@@ -5,43 +5,44 @@ export const countriesSlice = createSlice({
    initialState: {
       isLoading: false,
       countries: [],
+      auxCountries: [],
+      auxCountriesToMap: [],
       countryById: {},
       currentPage: 1
    },
    reducers: {
+      setCurrentPage: (state, action) => {
+         state.currentPage = action.payload;
+      },
       startLoadingCountries: (state) => {
          state.isLoading = true;
       },
       setCountries: (state, action) => {
          state.isLoading = false;
          state.countries = action.payload;
-      },
-      startLoadingCountryById: (state) => {
-         state.isLoading = true;
+         state.auxCountries = action.payload;
+         state.auxCountriesToMap = action.payload;
       },
       setCountryById: (state, action) => {
          state.isLoading = false;
          state.countryById = action.payload;
       },
-      startLoadingCountryByName: (state) => {
-         state.isLoading = true;
-      },
       setCountryByName: (state, action) => {
          state.isLoading = false;
          state.countries = action.payload;
       },
-      setCurrentPage: (state, action) => {
-         state.currentPage = action.payload;
+      setFilteredCountries: (state, action) => {
+         state.isLoading = false;
+         state.countries = action.payload;
       }
    },
 });
 // Action creators are generated for each case reducer function
 export const {
+   setCurrentPage,
    startLoadingCountries,
    setCountries,
-   startLoadingCountryById,
    setCountryById,
-   startLoadingCountryByName,
    setCountryByName,
-   setCurrentPage
+   setFilteredCountries
 } = countriesSlice.actions;

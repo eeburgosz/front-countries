@@ -1,11 +1,7 @@
 import React from 'react'
-import { NavBar } from "../../components";
 
 export const CreatePage = () => {
-  return (
-    <>
-      <NavBar />
+  return (    
       <div>CreatePage</div>
-    </>
   )
 }

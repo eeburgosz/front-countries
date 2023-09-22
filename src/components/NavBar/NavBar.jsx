@@ -6,8 +6,9 @@ import 'animate.css'
 import countries from '../../assets/countries.png'
 import { useDispatch } from "react-redux";
 import { getCountriesByName } from "../../redux-toolkit/thunks";
+import { setCurrentPage } from "../../redux-toolkit/countriesSlice";
 
-export const NavBar = ({setCurrentPage}) => {
+export const NavBar = () => {
 
   const location= useLocation()
   const navigate= useNavigate()
@@ -36,7 +37,7 @@ export const NavBar = ({setCurrentPage}) => {
     e.preventDefault();
     dispatch(getCountriesByName(value))
     setValue("")
-    setCurrentPage(1)
+    dispatch(setCurrentPage(1))
   }
 
   return (

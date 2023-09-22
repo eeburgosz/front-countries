@@ -1,18 +1,18 @@
-import { setCountries, setCountryById, setCountryByName, startLoadingCountries, startLoadingCountryById, startLoadingCountryByName } from "./countriesSlice";
+import { setCountries, setCountryById, setCountryByName, setFilteredCountries, startLoadingCountries } from "./countriesSlice";
 import axios from "axios";
+import { filteringCountries } from './../utils/utils';
 
 export const getCountries = () => {
    return async (dispatch, getState) => {
       dispatch(startLoadingCountries());
       const { data } = await axios.get('https://backcountries-d6li.onrender.com/countries/');
-      // console.log(data);
       dispatch(setCountries(data));
    };
 };
 
 export const getCountryById = (id) => {
    return async (dispatch, getState) => {
-      dispatch(startLoadingCountryById());
+      dispatch(startLoadingCountries());
       const { data } = await axios.get(`https://backcountries-d6li.onrender.com/countries/${id}`);
       dispatch(setCountryById(data));
    };
@@ -20,10 +20,18 @@ export const getCountryById = (id) => {
 
 export const getCountriesByName = (name) => {
    return async (dispatch) => {
-      console.log(name);
-      dispatch(startLoadingCountryByName());
+      dispatch(startLoadingCountries());
       const { data } = await axios.get(`https://backcountries-d6li.onrender.com/countries?name=${name}`);
-      console.log(data);
       dispatch(setCountryByName(data));
    };
 };
+
+export const continentSeasonFilter = ({ continent, season }) => {
+   return async (dispatch, getState) => {
+      const { auxCountries } = getState().countries;
+      const filtrarPaises = filteringCountries(auxCountries, continent, season);
+      dispatch(setFilteredCountries(filtrarPaises));
+   };
+}
+/*
+*/

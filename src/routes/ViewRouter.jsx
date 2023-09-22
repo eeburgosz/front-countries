@@ -1,11 +1,12 @@
 import React from 'react'
 import { Navigate, Route, Routes } from "react-router-dom";
 import { HomePage, DetailPage, CreatePage } from '../views';
-import { Footer } from "../components";
+import { Footer, NavBar } from "../components";
 
 export const ViewRouter = () => {
   return (
     <div>
+      <NavBar />
       <Routes>
          <Route path="/countries" exact element={<HomePage />} />
          <Route path="/country/:id" exact element={<DetailPage />} />

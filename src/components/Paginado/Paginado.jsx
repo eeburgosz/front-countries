@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './Paginado.module.css'
 
-export const Paginado = ({countries, countriesPerPage, paginator,onPageChange}) => {
+export const Paginado = ({countries, countriesPerPage, paginator}) => {
 
    const pageNumbers = [];
 	for (let i = 1; i < Math.ceil(countries / countriesPerPage) + 1; i++) {
