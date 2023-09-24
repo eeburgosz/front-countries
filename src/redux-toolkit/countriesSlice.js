@@ -34,6 +34,15 @@ export const countriesSlice = createSlice({
       setFilteredCountries: (state, action) => {
          state.isLoading = false;
          state.countries = action.payload;
+      },
+      setSortByAZ: (state, action) => {
+         state.isLoading = false;
+         console.log(action.payload);
+         state.countries = action.payload;
+      },
+      setSortByPopulation: (state, action) => {
+         state.isLoading = false;
+         state.countries = action.payload;
       }
    },
 });
@@ -44,5 +53,7 @@ export const {
    setCountries,
    setCountryById,
    setCountryByName,
-   setFilteredCountries
+   setFilteredCountries,
+   setSortByAZ,
+   setSortByPopulation
 } = countriesSlice.actions;

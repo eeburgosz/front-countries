@@ -1,6 +1,6 @@
-import { setCountries, setCountryById, setCountryByName, setFilteredCountries, startLoadingCountries } from "./countriesSlice";
+import { setCountries, setCountryById, setCountryByName, setFilteredCountries, setSortByAZ, setSortByPopulation, startLoadingCountries } from "./countriesSlice";
 import axios from "axios";
-import { filteringCountries } from './../utils/utils';
+import { filteringCountries, sortCountriesByAZ, sortedCountriesByPopulation, } from './../utils/utils';
 
 export const getCountries = () => {
    return async (dispatch, getState) => {
@@ -32,6 +32,23 @@ export const continentSeasonFilter = ({ continent, season }) => {
       const filtrarPaises = filteringCountries(auxCountries, continent, season);
       dispatch(setFilteredCountries(filtrarPaises));
    };
-}
-/*
-*/
+};
+
+export const sortByAZ = (payload) => {
+   return async (dispatch, getState) => {
+      dispatch(startLoadingCountries());
+      const { auxCountries } = getState().countries;
+      let countriesToSort = [...auxCountries];
+      const sortedCountries = sortCountriesByAZ(countriesToSort, payload);
+      dispatch(setSortByAZ(sortedCountries));
+   };
+};
+
+export const sortByPopulation = (payload) => {
+   return async (dispatch, getState) => {
+      dispatch(startLoadingCountries());
+      const { auxCountries } = getState().countries;
+      const sortedCountries = payload === "All countries" ? auxCountries : sortedCountriesByPopulation(auxCountries, payload);
+      dispatch(setSortByPopulation(sortedCountries));
+   };
+};

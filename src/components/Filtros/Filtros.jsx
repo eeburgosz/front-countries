@@ -1,7 +1,7 @@
-import React, { useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './Filtros.module.css';
 import { useDispatch, useSelector } from "react-redux";
-import { continentSeasonFilter } from "../../redux-toolkit/thunks";
+import { continentSeasonFilter, sortByAZ, sortByPopulation,  } from "../../redux-toolkit/thunks";
 import { setCurrentPage } from "../../redux-toolkit/countriesSlice";
 import { useFiltersContinentSeason } from "../../hooks/useFilters";
 
@@ -26,37 +26,47 @@ export const Filtros = () => {
 
   const seasons = Array.from(seasonsSet);
 
-  const { filters, setFilters } = useFiltersContinentSeason();
+  const { CSfilters, setCSFilters } = useFiltersContinentSeason();
 
   const handleContinent = (e) => {
-    setFilters({
-      ...filters,
+    setCSFilters({
+      ...CSfilters,
       continent: e.target.value
     });
     dispatch(setCurrentPage(1));
   };
 
   const handleSeason = (e) => {
-    setFilters({
-      ...filters,
+    setCSFilters({
+      ...CSfilters,
       season: e.target.value
     });
     dispatch(setCurrentPage(1));
   };
-
-  useEffect(()=>{
-    dispatch(continentSeasonFilter(filters));
-  }, [dispatch, filters])
   
-  // const handleSort=(e)=>{
-  //   console.log(e.target.value)
-  //   dispatch(setCurrentPage(1))
-  // }
-  // const handlePopulation=(e)=>{
-  //   console.log(e.target.value)
-  //   dispatch(setCurrentPage(1))
-  // }
+  useEffect(() => {
+    dispatch(continentSeasonFilter(CSfilters));
+  }, [dispatch, CSfilters]);
+  
+  const [sortFilter, setSortFilter] = useState("All countries");
+  const [populationFilter, setPopulationFilter] = useState("All countries");
+  
+  const handleSort = (e) => {
+    setSortFilter(e.target.value);
+    dispatch(setCurrentPage(1));    
+  };
+  useEffect(() => {
+    dispatch(sortByAZ(sortFilter))
+  }, [dispatch, sortFilter]);
 
+  const handlePopulation = (e) => {
+    setPopulationFilter(e.target.value);
+    dispatch(setCurrentPage(1));    
+  };  
+  useEffect(() => {
+   dispatch(sortByPopulation(populationFilter))
+  }, [dispatch, populationFilter]);
+  
   return (
     <div className={style.container}>
       {
@@ -98,7 +108,7 @@ export const Filtros = () => {
               <label htmlFor="sort">Sort</label>
               <select
                 id="sort"
-                // onChange={handleSort} 
+                onChange={handleSort}
                 className={style.select}
               >
                 <option defaultValue>All countries</option>
@@ -111,7 +121,7 @@ export const Filtros = () => {
               <label htmlFor="population">Population</label>
               <select
                 id="population"
-                // onChange={handlePopulation} 
+                onChange={handlePopulation}
                 className={style.select}
               >
                 <option defaultValue>All countries</option>

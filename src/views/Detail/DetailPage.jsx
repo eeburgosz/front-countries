@@ -21,6 +21,7 @@ export const DetailPage = () => {
     :
       (
       <>
+      <button onClick={()=>window.history.back()}>Go back</button>
         <div className={style.subcontainer}>
           <div className={style.flagSubcontainer}>
             <h1>{countryById.name}</h1>
