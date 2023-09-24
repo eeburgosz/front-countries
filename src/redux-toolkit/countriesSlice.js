@@ -37,7 +37,6 @@ export const countriesSlice = createSlice({
       },
       setSortByAZ: (state, action) => {
          state.isLoading = false;
-         console.log(action.payload);
          state.countries = action.payload;
       },
       setSortByPopulation: (state, action) => {

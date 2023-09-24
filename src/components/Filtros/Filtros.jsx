@@ -135,6 +135,3 @@ export const Filtros = () => {
     </div>
   );
 }
-/*
-
-*/

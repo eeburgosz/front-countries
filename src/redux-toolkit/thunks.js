@@ -52,3 +52,16 @@ export const sortByPopulation = (payload) => {
       dispatch(setSortByPopulation(sortedCountries));
    };
 };
+
+export const createActivity = (selected, create) => {
+   return async (dispatch) => {
+      const postData = {
+         countryId: selected,
+         activityName: create.name,
+         difficulty: create.difficulty,
+         duration: create.duration,
+         season: create.season
+      };
+      await axios.post("https://backcountries-d6li.onrender.com/activity", postData);
+   };
+};

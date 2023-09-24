@@ -30,9 +30,7 @@ export const sortCountriesByAZ = (countries, sort) => {
 };
 
 export const sortedCountriesByPopulation = (countries, population) => {
-
    let countriesToSort = [...countries];
-
    countriesToSort.sort((a, b) => {
       if (population === "minor") {
          return a.population - b.population;
@@ -42,6 +40,5 @@ export const sortedCountriesByPopulation = (countries, population) => {
          return 0;
       }
    });
-
    return countriesToSort;
 };
