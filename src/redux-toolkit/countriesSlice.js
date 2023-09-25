@@ -45,7 +45,7 @@ export const countriesSlice = createSlice({
       }
    },
 });
-// Action creators are generated for each case reducer function
+
 export const {
    setCurrentPage,
    startLoadingCountries,

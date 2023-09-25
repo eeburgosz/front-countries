@@ -54,9 +54,17 @@ export const sortByPopulation = (payload) => {
 };
 
 export const createActivity = (selected, create) => {
-   return async (dispatch) => {
+   return async (dispatch, getState) => {
+      const { auxCountries } = getState().countries;
+      const ids = [];
+      auxCountries.forEach((country) => {
+         const found = selected.find(sel => sel.name === country);
+         if (found) ids.push(found.id);
+         return ids;
+      });
+
       const postData = {
-         countryId: selected,
+         countryId: ids,
          activityName: create.name,
          difficulty: create.difficulty,
          duration: create.duration,

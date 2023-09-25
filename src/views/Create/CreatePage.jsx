@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./CreatePage.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { createActivity } from "../../redux-toolkit/thunks";
@@ -8,6 +8,13 @@ import {
 	validatorName,
 	validatorSeason,
 } from "../../utils/formValidator";
+
+const initialFormValues = {
+	name: "",
+	season: "Select",
+	difficulty: 1,
+	duration: "",
+};
 
 export const CreatePage = () => {
 	const dispatch = useDispatch();
@@ -25,12 +32,8 @@ export const CreatePage = () => {
 	});
 	const seasons = Array.from(seasonsSet);
 	//!------------------------------------------------------------------
-	const [create, setCreate] = useState({
-		name: "",
-		season: "",
-		difficulty: 1,
-		duration: "",
-	});
+
+	const [create, setCreate] = useState(initialFormValues);
 	const [selected, setSelected] = useState([]);
 
 	const onInputChange = (e) => {
@@ -38,6 +41,11 @@ export const CreatePage = () => {
 			...create,
 			[e.target.name]: e.target.value,
 		});
+	};
+
+	const resetForm = () => {
+		setCreate(initialFormValues);
+		setSelected([]);
 	};
 
 	const handleInputChange = (e) => {
@@ -50,7 +58,7 @@ export const CreatePage = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const nameError = validatorName(name);
+		const nameError = validatorName(name, auxCountriesToMap);
 		if (nameError) {
 			alert(nameError);
 			return;
@@ -70,11 +78,12 @@ export const CreatePage = () => {
 			alert(countriesError);
 			return;
 		}
-
 		dispatch(createActivity(selected, create));
-	};
+		resetForm();
+		alert("Activity created successfully");
 
-	//!------------------------------------------------------------------
+		//!------------------------------------------------------------------
+	};
 
 	return (
 		<form onSubmit={handleSubmit} className={style.container}>
@@ -87,6 +96,7 @@ export const CreatePage = () => {
 							<div className={style.inputContainer}>
 								<label htmlFor="name">Name</label>
 								<input
+									value={create.name}
 									id="name"
 									type="text"
 									name="name"
@@ -113,6 +123,7 @@ export const CreatePage = () => {
 							<div className={style.inputContainer}>
 								<label htmlFor="duration">Duration (months)</label>
 								<input
+									value={create.duration}
 									id="duration"
 									name="duration"
 									type="number"
@@ -148,7 +159,7 @@ export const CreatePage = () => {
 										id="countries"
 										name="country"
 										type="checkbox"
-										value={country.id}
+										value={country.name}
 										onChange={handleInputChange}
 									/>
 									<label>{country.name}</label>

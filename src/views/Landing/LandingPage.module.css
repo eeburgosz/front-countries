@@ -1,0 +1,35 @@
+.container{
+   /* border: 1px solid red; */
+   height: 100vh;
+}
+
+.subcontainer {
+   color: #E5E5CB;
+   position: absolute;
+   margin-top: 6rem;
+   /* height: 24rem; */
+   left: 10rem;
+   right: 10rem;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      background-color: rgba(49, 37, 20, 0.75);
+      border-radius: 12px;
+}
+
+.subcontainer button {
+   padding: 1rem;
+   cursor: pointer;
+   display: flex;
+   position: absolute;
+   align-self: center;
+   bottom: -200px;
+   color: #E5E5CB;
+   font-weight: 700;
+   backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      background-color: rgba(49, 37, 20, 0.75);
+      border-radius: 12px;
+}
