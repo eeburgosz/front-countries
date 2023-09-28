@@ -56,13 +56,15 @@ export const sortByPopulation = (payload) => {
 export const createActivity = (selected, create) => {
    return async (dispatch, getState) => {
       const { auxCountries } = getState().countries;
+      console.log(selected);
       const ids = [];
-      auxCountries.forEach((country) => {
-         const found = selected.find(sel => sel.name === country);
-         if (found) ids.push(found.id);
-         return ids;
-      });
+      for (let i = 0; i < auxCountries.length; i++) {
+         if (selected.includes(auxCountries[i].name)) {
+            ids.push(auxCountries[i].id);
+         }
+      }
 
+      console.log(ids);
       const postData = {
          countryId: ids,
          activityName: create.name,
@@ -70,6 +72,10 @@ export const createActivity = (selected, create) => {
          duration: create.duration,
          season: create.season
       };
-      await axios.post("https://backcountries-d6li.onrender.com/activity", postData);
+      try {
+         await (axios.post("https://backcountries-d6li.onrender.com/activity", postData));
+      } catch (error) {
+         throw new Error({ message: error.message });
+      }
    };
 };
