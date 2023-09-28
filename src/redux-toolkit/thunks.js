@@ -56,7 +56,6 @@ export const sortByPopulation = (payload) => {
 export const createActivity = (selected, create) => {
    return async (dispatch, getState) => {
       const { auxCountries } = getState().countries;
-      console.log(selected);
       const ids = [];
       for (let i = 0; i < auxCountries.length; i++) {
          if (selected.includes(auxCountries[i].name)) {

@@ -22,15 +22,7 @@ export const CreatePage = () => {
 		(state) => state.countries
 	);
 
-	const seasonsSet = new Set();
-	auxCountriesToMap?.forEach((obj) => {
-		if (obj.Activities && obj.Activities.length > 0) {
-			obj.Activities.forEach((activity) => {
-				seasonsSet.add(activity.season);
-			});
-		}
-	});
-	const seasons = Array.from(seasonsSet);
+	const seasons = ["winter", "summer", "spring", "autumn"];
 	//!------------------------------------------------------------------
 
 	const [create, setCreate] = useState(initialFormValues);
