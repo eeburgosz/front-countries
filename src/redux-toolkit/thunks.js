@@ -62,8 +62,6 @@ export const createActivity = (selected, create) => {
             ids.push(auxCountries[i].id);
          }
       }
-
-      console.log(ids);
       const postData = {
          countryId: ids,
          activityName: create.name,

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import style from "./CreatePage.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { createActivity } from "../../redux-toolkit/thunks";
 import {
@@ -8,6 +7,8 @@ import {
 	validatorName,
 	validatorSeason,
 } from "../../utils/formValidator";
+import style from "./CreatePage.module.css";
+import Swal from "sweetalert2";
 
 const initialFormValues = {
 	name: "",
@@ -52,27 +53,48 @@ export const CreatePage = () => {
 		e.preventDefault();
 		const nameError = validatorName(name, auxCountriesToMap);
 		if (nameError) {
-			alert(nameError);
+			Swal.fire({
+				icon: "error",
+				title: "Oops...",
+				text: nameError,
+			});
 			return;
 		}
 		const seasonError = validatorSeason(season);
 		if (seasonError) {
-			alert(seasonError);
+			Swal.fire({
+				icon: "error",
+				title: "Oops...",
+				text: seasonError,
+			});
 			return;
 		}
 		const durationError = validatorDuration(duration);
 		if (durationError) {
-			alert(durationError);
+			Swal.fire({
+				icon: "error",
+				title: "Oops...",
+				text: durationError,
+			});
 			return;
 		}
 		const countriesError = validatorCountries(selected);
 		if (countriesError) {
-			alert(countriesError);
+			Swal.fire({
+				icon: "error",
+				title: "Oops...",
+				text: countriesError,
+			});
 			return;
 		}
 		dispatch(createActivity(selected, create));
 		resetForm();
-		alert("Activity created successfully");
+		Swal.fire({
+			icon: "success",
+			title: "Activity has been created successfully",
+			showConfirmButton: false,
+			timer: 1500,
+		});
 
 		//!------------------------------------------------------------------
 	};

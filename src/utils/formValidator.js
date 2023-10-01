@@ -9,7 +9,7 @@ export const validatorName = (name, countries) => {
    if (activities) return ("Activity already exists");
 };
 export const validatorSeason = (season) => {
-   if (season.length === 0) return ("Season must not be empty");
+   if (season.length === 0 || season === "Select") return ("Season must not be empty");
 };
 export const validatorDuration = (duration) => {
    if (duration.length < 1 || duration.length > 12) return ("Duration must be between 1 and 12");
