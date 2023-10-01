@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import style from "./CreatePage.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { createActivity } from "../../redux-toolkit/thunks";

@@ -9,7 +9,6 @@ export const HomePage = () => {
 			<div className={style.subcontainer}>
 				<CardsContainer />
 			</div>
-			<div>Footer</div>
 		</div>
 	);
 };
